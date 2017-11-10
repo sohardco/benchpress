@@ -7,3 +7,9 @@ function calculateWeights(weight,ratio){
     }
     return trainingWeight;
 }
+
+function concatTrainingRatios(scaleObj){
+    for (var i = 1; i < (scaleObj.values.length - 1); i++) {
+        var arr[i - 1] = scaleObj.values[0].concat(scaleObj.values[i]);
+    }
+}
