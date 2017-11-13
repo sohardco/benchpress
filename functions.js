@@ -10,8 +10,15 @@ function calculateWeights(weight,ratio){
 }
 
 function concatTrainingRatios(scaleObj){
-    for (var i = 1; i < (values(scaleObj).length - 1); i++) {
-        concatDays[i - 1] = values(scaleObj)[0].concat(values(scaleObj)[i]);
+    for (var i = 1; i < (Object.values(scaleObj).length); i++) {
+        if (i === 11){
+            concatDays[i - 1] = Object.values(scaleObj)[i];
+        }else if (i === 12) {
+            concatDays[i - 1] = Object.values(scaleObj)[i];
+        }else{
+            concatDays[i - 1] = Object.values(scaleObj)[0].concat(Object.values(scaleObj)[i]);
+        }
+
     }
     return concatDays;
 }

@@ -1,16 +1,21 @@
 html {
     font-family: monospace;
 }
-body{
-
+.maindiv{
+    box-sizing:border-box;
+    position: absolute;
+    opacity: 0.9;
+    width: auto;
+    left: 8px;
+    right: 10px;
 }
 table {
-    display: flex;
+
 }
 .navigation {
     position: fixed;
     bottom:0;
-    align-content: 
+    align-content:
 }
 .button {
     background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
