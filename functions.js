@@ -1,27 +1,28 @@
 var trainingWeight = [];
 var concatDays = [];
-var eleventhDay = 11;
-var lastDay = 12;
-var offGrid = 1;
 
-function calculateWeights(weight,ratio){
-    for (var count=0; count < ratio.length; count++) {
+function calculateWeights(weight,concatDays){
+
+    for (var count=0; count < Object.keys(concatDays).length; count++) {
+        var ratio = Object.values(concatDays)[count];
         var fractionalWeight = (weight * ratio[count])/2.5;
         trainingWeight[count] = Math.round(fractionalWeight)*2.5;
     }
     return trainingWeight;
 }
 
-function concatTrainingRatios(scaleObj){
-    for (var i = 1; i < (Object.values(scaleObj).length); i++) {
-        if (i === eleventhDay){
-            concatDays[i - offGrid] = Object.values(scaleObj)[i];
-        }else if (i === lastDay) {
-            concatDays[i - offGrid] = Object.values(scaleObj)[i];
+function concatTrainingRatios(warmUp, scaleObj){
+    for (var i = 0; i < (Object.values(scaleObj).length); i++) {
+        if (Object.keys(scaleObj)[i] === "eleventhDay"){
+            concatDays[i] = Object.values(scaleObj)[i];
+        }else if (Object.keys(scaleObj)[i] === "lastDay") {
+            concatDays[i] = Object.values(scaleObj)[i];
         }else{
-            concatDays[i - offGrid] = Object.values(scaleObj)[0].concat(Object.values(scaleObj)[i]);
+            concatDays[i] = warmUp.concat(Object.values(scaleObj)[i]);
         }
 
     }
     return concatDays;
 }
+
+export {calculateWeights, concatTrainingRatios};
