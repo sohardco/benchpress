@@ -5,11 +5,20 @@
         <title>Bench press</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="./main.js"></script>
     </head>
     <body>
         <form>
-            <input id="inputWeight" type="number">
-            <input type="submit">
+            <input id="inputWeight" type="number" >
+            <input type="button" id="button" value="Кнопка">
+            <script>
+                button.onclick = function() {
+                    var initialBarbellweight = parseInt(document.getElementById('inputWeight').value);
+                    concatTrainingRatios(warmUp, workoutRatios);
+                    calculateWeights(initialBarbellweight, concatDays);
+                    console.log(trainingWeight);
+                };
+            </script>
         </form>
     </body>
 </html>

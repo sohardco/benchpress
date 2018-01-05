@@ -9,16 +9,18 @@ function calculateWeights(weight,ratio){
     return trainingWeight;
 }
 
-function concatTrainingRatios(scaleObj){
-    for (var i = 1; i < (Object.values(scaleObj).length); i++) {
-        if (i === 11){
-            concatDays[i - 1] = Object.values(scaleObj)[i];
-        }else if (i === 12) {
-            concatDays[i - 1] = Object.values(scaleObj)[i];
+function concatTrainingRatios(warmUp, scaleObj){
+    for (var i = 0; i < (Object.values(scaleObj).length); i++) {
+        if (Object.keys(scaleObj)[i] === "eleventhDay"){
+            concatDays[i] = Object.values(scaleObj)[i];
+        }else if (Object.keys(scaleObj)[i] === "lastDay") {
+            concatDays[i] = Object.values(scaleObj)[i];
         }else{
-            concatDays[i - 1] = Object.values(scaleObj)[0].concat(Object.values(scaleObj)[i]);
+            concatDays[i] = warmUp.concat(Object.values(scaleObj)[i]);
         }
 
     }
     return concatDays;
 }
+
+export {calculateWeights, concatTrainingRatios};
