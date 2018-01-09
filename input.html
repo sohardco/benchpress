@@ -5,7 +5,8 @@
         <title>Bench press</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="module" src="./main.js"></script>
+        <script src="./main.js"></script>
+        <script src="./functions.js"></script>
     </head>
     <body>
 
@@ -17,10 +18,10 @@
                     var initialBarbellweight = parseInt(document.getElementById('inputWeight').value);
                     concatTrainingRatios(warmUp, workoutRatios);
                     calculateWeights(initialBarbellweight, concatDays);
-                    console.log(trainingWeight);
+                    console.log(calculatedBarbellWeights);
                 };
             </script>
         </form>
-        
+
     </body>
 </html>

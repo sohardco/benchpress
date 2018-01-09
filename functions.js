@@ -2,8 +2,7 @@ var calculatedBarbellWeights = [];
 var concatDays = [];
 //concatDays array of arrays
 
-export function calculateWeights(weight, concatDays) {
-
+function calculateWeights(weight, concatDays) {
     for (var count = 0; count < concatDays.length; count++) {
         var trainingWeight = [];
         var ratio = concatDays[count];
@@ -12,11 +11,12 @@ export function calculateWeights(weight, concatDays) {
                 trainingWeight[i] = (Math.round((weight * ratio[i]) / 2.5) * 2.5);
             }
             calculatedBarbellWeights[count] = trainingWeight;
-        }
-        return calculatedBarbellWeights;
+        }    
     }
+    return calculatedBarbellWeights;
+};
 
-export    function concatTrainingRatios(warmUp, scaleObj) {
+function concatTrainingRatios(warmUp, scaleObj) {
         for (var i = 0; i < (Object.values(scaleObj).length); i++) {
             if (Object.keys(scaleObj)[i] === "eleventhDay") {
                 concatDays[i] = Object.values(scaleObj)[i];
@@ -25,7 +25,6 @@ export    function concatTrainingRatios(warmUp, scaleObj) {
             } else {
                 concatDays[i] = warmUp.concat(Object.values(scaleObj)[i]);
             }
-
         }
-        return concatDays;
-    }
+    return concatDays;
+};

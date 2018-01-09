@@ -1,7 +1,7 @@
-import{
-    calculateWeights,
-    concatTrainingRatios
-}from './functions';
+// import{
+//     calculateWeights,
+//     concatTrainingRatios
+// }from './functions';
 
 var warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
 var workoutRatios = {
