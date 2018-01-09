@@ -7,11 +7,9 @@ function calculateWeights(weight, concatDays) {
         var trainingWeight = [];
         var ratio = concatDays[count];
         for (var i = 0; i < ratio.length; i++) {
-            for (var i = 0; i < ratio.length; i++) {
-                trainingWeight[i] = (Math.round((weight * ratio[i]) / 2.5) * 2.5);
-            }
-            calculatedBarbellWeights[count] = trainingWeight;
-        }    
+            trainingWeight[i] = ( Math.round( (weight * ratio[i]) / 2.5) * 2.5);
+        }
+        calculatedBarbellWeights[count] = trainingWeight;
     }
     return calculatedBarbellWeights;
 };
@@ -23,8 +21,17 @@ function concatTrainingRatios(warmUp, scaleObj) {
             } else if (Object.keys(scaleObj)[i] === "lastDay") {
                 concatDays[i] = Object.values(scaleObj)[i];
             } else {
-                concatDays[i] = warmUp.concat(Object.values(scaleObj)[i]);
+                concatDays[i] = warmUp.concat( Object.values(scaleObj)[i] );
             }
         }
     return concatDays;
+};
+
+function fillTable(calculatedBarbellWeights) {
+    for (var i = 0; i < calculatedBarbellWeights.length; i++) {
+        var fillingArray = calculatedBarbellWeights[i];
+    }
+    for (var i = 0; i < fillingArray.length; i++) {
+        document.getElementsByName("weight") = fillingArray[i];
+    }
 };
