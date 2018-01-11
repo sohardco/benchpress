@@ -1,30 +1,50 @@
 html {
     font-family: monospace;
 }
-.maindiv{
-    box-sizing:border-box;
-    position: absolute;
-    opacity: 0.9;
-    width: auto;
-    left: 8px;
-    right: 10px;
+input:invalid {
+  border: 2px solid red;
 }
-table {
 
+input:valid {
+  border: 2px solid black;
 }
-.navigation {
-    position: fixed;
-    bottom:0;
-    align-content:
+
+.headtable {
+    display: none;
 }
-.button {
-    background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.tableDay1 {
+    display: none;
+}
+.tableDay2 {
+    display: none;
+}
+.tableDay3 {
+    display: none;
+}
+.tableDay4 {
+    display: none;
+}
+.tableDay5 {
+    display: none;
+}
+.tableDay6 {
+    display: none;
+}
+.tableDay7 {
+    display: none;
+}
+.tableDay8 {
+    display: none;
+}
+.tableDay9 {
+    display: none;
+}
+.tableDay10 {
+    display: none;
+}
+.tableDay11 {
+    display: none;
+}
+.tableDay12 {
+    display: none;
+}

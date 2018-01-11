@@ -30,8 +30,9 @@ function concatTrainingRatios(warmUp, scaleObj) {
 function fillTable(calculatedBarbellWeights) {
     for (var i = 0; i < calculatedBarbellWeights.length; i++) {
         var fillingArray = calculatedBarbellWeights[i];
-    }
     for (var i = 0; i < fillingArray.length; i++) {
-        document.getElementsByName("weight") = fillingArray[i];
+        document.getElementsByName("weight")[i].innerHTML = fillingArray[i];
+        }
     }
 };
+//export {calculateWeights, concatTrainingRatios};

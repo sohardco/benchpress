@@ -18,3 +18,18 @@ var workoutRatios = {
     eleventhDay:[0.3, 0.45, 0.6, 0.7],
     lastDay:[0.36, 0.54, 0.68, 0.76, 0.84, 0.92, 1.0]
 };
+
+var tableIds = [
+    "tableDay1",
+    "tableDay2",
+    "tableDay3",
+    "tableDay4",
+    "tableDay5",
+    "tableDay6",
+    "tableDay7",
+    "tableDay8",
+    "tableDay9",
+    "tableDay10",
+    "tableDay11",
+    "tableDay12"
+]
