@@ -1,5 +1,6 @@
-var calculatedBarbellWeights = [];
+var calculatedBarbellWeights = {};
 var concatDays = [];
+
 //concatDays array of arrays
 
 function calculateWeights(weight, concatDays) {
@@ -26,6 +27,24 @@ function concatTrainingRatios(warmUp, scaleObj) {
         }
     return concatDays;
 };
+
+var tdCount = 2;
+
+function tableCreate(name,rowArray) {
+    var body = document.body;
+    var tbl = document.createElement("table");
+    tbl.display = 'none';
+
+    for (var i = 0; i < rowArray.length; i++) {
+        var tr = tbl.insertRow();
+        var th = tbl.createTHead("th");
+        for (var j = 0; j < tdCount; i++) {
+            var td = tr.insertCell();
+               td.appendChild(document.createTextNode('Cell'));
+        }
+    }
+
+}
 
 function fillTable(calculatedBarbellWeights) {
     for (var i = 0; i < calculatedBarbellWeights.length; i++) {
