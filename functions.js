@@ -10,7 +10,7 @@ function calculateWeights(weight, concatDays) {
         for (var i = 0; i < ratio.length; i++) {
             trainingWeight[i] = ( Math.round( (weight * ratio[i]) / 2.5) * 2.5);
         }
-        calculatedBarbellWeights[count] = trainingWeight;
+        calculatedBarbellWeights["tableDay" + count] = trainingWeight;
     }
     return calculatedBarbellWeights;
 };
@@ -28,30 +28,30 @@ function concatTrainingRatios(warmUp, scaleObj) {
     return concatDays;
 };
 
-var tdCount = 2;
 
-function tableCreate(name,rowArray) {
+function createTableFromObj(tableObj) {
+    var tdCount = 3;
     var body = document.body;
     var tbl = document.createElement("table");
-    tbl.display = 'none';
+    var th = tbl.createTHead();
+    //tbl.style.display = 'none';
 
-    for (var i = 0; i < rowArray.length; i++) {
+    for (var i = 0; i < day.length; i++) {
         var tr = tbl.insertRow();
-        var th = tbl.createTHead("th");
-        for (var j = 0; j < tdCount; i++) {
+        for (var j = 0; j < tdCount; j++) {
             var td = tr.insertCell();
-               td.appendChild(document.createTextNode('Cell'));
+                td.appendChild(document.createTextNode('Cell'));
+            }
         }
-    }
-
+    body.appendChild(tbl);
 }
 
-function fillTable(calculatedBarbellWeights) {
-    for (var i = 0; i < calculatedBarbellWeights.length; i++) {
-        var fillingArray = calculatedBarbellWeights[i];
-    for (var i = 0; i < fillingArray.length; i++) {
-        document.getElementsByName("weight")[i].innerHTML = fillingArray[i];
-        }
-    }
-};
+// function fillTable(calculatedBarbellWeights) {
+//     for (var i = 0; i < calculatedBarbellWeights.length; i++) {
+//         var fillingArray = calculatedBarbellWeights[i];
+//     for (var i = 0; i < fillingArray.length; i++) {
+//         document.getElementsByName("weight")[i].innerHTML = fillingArray[i];
+//         }
+//     }
+// };
 //export {calculateWeights, concatTrainingRatios};
