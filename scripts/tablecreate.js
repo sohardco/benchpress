@@ -2,20 +2,26 @@
 function createTableFromObj(tableObj) {
     var body = document.body;
     var tbl = document.createElement("table");
-    tbl.className = "hide";
-    var th = tbl.createTHead();
+    tbl.className = "hidden";
+    tbl.id = tableObj[0];
+    //var th = tbl.createTHead();
     var tdCount = 3;
     var trCount = tableObj[1].length;
-
-     
 
     for (var i = 0; i < trCount; i++) {
         var tr = tbl.insertRow();
         for (var j = 0; j < tdCount; j++) {
             var td = tr.insertCell();
-                td.appendChild(document.createTextNode('Cell'));
+            if (j == 0) {
+                td.appendChild(document.createTextNode('Cell1'));
+            }else if (j == 1) {
+                td.appendChild(document.createTextNode('Cell2'));
+            }else {
+                td.appendChild(document.createTextNode('Cell3'));
             }
         }
+    }
+    //body.removeChild(tbl);
     body.appendChild(tbl);
 }
 

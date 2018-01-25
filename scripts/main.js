@@ -1,7 +1,22 @@
-// import{
-//     calculateWeights,
-//     concatTrainingRatios
-// }from './functions';
+var calculateBtn = document.getElementById("calculate");
+var headTable = document.getElementById("headtable");
+var nextBtn = document.getElementById("next");
+var initForm = document.getElementById("init");
+
+function app() {
+    var initialBarbellweight = parseInt( document.getElementById('inputWeight').value );
+    concatTrainingRatios(warmUp, workoutRatios);
+    calculateWeights(initialBarbellweight, concatDays);
+    console.log(calculatedBarbellWeights);
+    fillTable(calculatedBarbellWeights);
+    headTable.className = 'show';
+    tableDay0.className = 'show';
+    nextBtn.className = 'show';
+    initForm.className = 'hidden';
+}
+function switchPage(){
+
+}
 
 var warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
 var workoutRatios = {
@@ -19,17 +34,5 @@ var workoutRatios = {
     lastDay:[0.36, 0.54, 0.68, 0.76, 0.84, 0.92, 1.0]
 };
 
-var tableIds = [
-    "tableDay1",
-    "tableDay2",
-    "tableDay3",
-    "tableDay4",
-    "tableDay5",
-    "tableDay6",
-    "tableDay7",
-    "tableDay8",
-    "tableDay9",
-    "tableDay10",
-    "tableDay11",
-    "tableDay12"
-]
+calculate.addEventListener('click', app);
+nextBtn.addEventListener('click', switchPage);

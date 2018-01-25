@@ -5,30 +5,25 @@
         <title>Bench press</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="./main.js"></script>
-        <script src="./functions.js"></script>
+
+        <script src="../scripts/maths.js"></script>
+        <script src="../scripts/tablecreate.js"></script>
     </head>
-    <body>
-        <form>
+    <body>     
+        <form id="init">
             <label for="number"> Please, enter your peak barbell weight</label>
             <input id="inputWeight" type="number" name="amount" min="1" max="500">
-            <input type="button" id="button" value="Calculate!">
-            <script>
-                button.onclick = function() {
-                    var initialBarbellweight = parseInt( document.getElementById('inputWeight').value );
-                    concatTrainingRatios(warmUp, workoutRatios);
-                    calculateWeights(initialBarbellweight, concatDays);
-                    console.log(calculatedBarbellWeights);
-                    fillTable(calculatedBarbellWeights);
-                };
-            </script>
+            <input type="button" id="calculate" value="Calculate!">
         </form>
-        <table class="headtable">
+        <table class="headtable hidden" id="headtable">
             <tr>
                 <th>Period</th>
                 <th>Weight</td>
                 <th>Repeats</td>
             </tr>
         </table>
+        <input type="button" class="hidden" id="previous" name="previous" value="back">
+        <input type="button" class="hidden" id="next" name="next" value="next">
+        <script src="../scripts/main.js"></script>
     </body>
 </html>
