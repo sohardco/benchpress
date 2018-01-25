@@ -9,42 +9,6 @@ input:valid {
   border: 2px solid black;
 }
 
-.headtable {
-    display: none;
-}
-.tableDay1 {
-    display: none;
-}
-.tableDay2 {
-    display: none;
-}
-.tableDay3 {
-    display: none;
-}
-.tableDay4 {
-    display: none;
-}
-.tableDay5 {
-    display: none;
-}
-.tableDay6 {
-    display: none;
-}
-.tableDay7 {
-    display: none;
-}
-.tableDay8 {
-    display: none;
-}
-.tableDay9 {
-    display: none;
-}
-.tableDay10 {
-    display: none;
-}
-.tableDay11 {
-    display: none;
-}
-.tableDay12 {
+.hide {
     display: none;
 }
