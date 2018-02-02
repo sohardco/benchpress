@@ -1,22 +1,38 @@
 var calculateBtn = document.getElementById("calculate");
 var headTable = document.getElementById("headtable");
+var prevBtn = document.getElementById("previous");
 var nextBtn = document.getElementById("next");
 var initForm = document.getElementById("init");
 
 function app() {
-    var initialBarbellweight = parseInt( document.getElementById('inputWeight').value );
+    var initialBarbellweight = parseInt(document.getElementById('inputWeight').value);
+
     concatTrainingRatios(warmUp, workoutRatios);
     calculateWeights(initialBarbellweight, concatDays);
     console.log(calculatedBarbellWeights);
     fillTable(calculatedBarbellWeights);
-    headTable.className = 'show';
-    tableDay0.className = 'show';
-    nextBtn.className = 'show';
-    initForm.className = 'hidden';
+    var showFirstDay = document.querySelector('.js-table');
+    headTable.classList.toggle('hidden', false);
+    showFirstDay.classList.toggle('hidden', false);
+    nextBtn.classList.toggle('hidden', false);
+    initForm.classList.toggle('hidden', false);
 }
-function switchPage(){
-
-}
+// function switchPage(){
+//
+// }
+// function toggleNextPage(tableObject) {
+//     var counter = 0;
+//     var showNextElem = document.querySelector('.someClass');
+//     showNextElem.classList.toggle('hidden', true);
+//     showNextElem.className = 'hidden';
+//     counter +=1;
+//     showNextElem.className = 'show';
+//     if(showNextElem === 0){
+//         prevBtn.className = 'hidden';
+//     }else if(showNextElem === Object.keys(tableObject).length){
+//         nextBtn.className = 'hidden';
+//     }
+// }
 
 var warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
 var workoutRatios = {
@@ -35,4 +51,5 @@ var workoutRatios = {
 };
 
 calculate.addEventListener('click', app);
-nextBtn.addEventListener('click', switchPage);
+//nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
+initForm.addEventListener('submit', app);

@@ -2,8 +2,8 @@
 function createTableFromObj(tableObj) {
     var body = document.body;
     var tbl = document.createElement("table");
-    tbl.className = "hidden";
-    tbl.id = tableObj[0];
+    tbl.className = "hidden table js-table";
+    //tbl.id = tableObj[0];
     //var th = tbl.createTHead();
     var tdCount = 3;
     var trCount = tableObj[1].length;
