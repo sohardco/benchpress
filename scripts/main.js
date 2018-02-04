@@ -17,10 +17,37 @@ function app() {
     nextBtn.classList.toggle('hidden', false);
     initForm.classList.toggle('hidden', false);
 }
-// function switchPage(){
-//
-// }
-// function toggleNextPage(tableObject) {
+
+function goToNextPage() {
+var nodeTablesRendered = document.querySelectorAll('.js-table');
+var arrTablesRendered = Array.prototype.slice.call(nodeTablesRendered);
+
+function returnDisplayElement(element){
+	var regCheck = /(hidden)/gi;
+	if (!regCheck.test(element.classList.value)){
+	return element.classList.value
+	}
+};
+
+var getDisplayIndex = arrTablesRendered.findIndex(returnDisplayElement);
+
+switch (getDisplayIndex) {
+    case 0:
+        prevBtn.classList.toggle('hidden', true);
+        break;
+    case arrTablesRendered.length:
+        nextBtn.classList.toggle('hidden', true);
+        break;
+}
+}
+// if (getDisplayIndex === 0) {
+//     prevBtn.classList.toggle('hidden', true);
+// } else if (getDisplayIndex === arrTablesRendered.length) {
+//     nextBtn.classList.toggle('hidden', true);
+// };
+
+
+
 //     var counter = 0;
 //     var showNextElem = document.querySelector('.someClass');
 //     showNextElem.classList.toggle('hidden', true);
@@ -51,5 +78,6 @@ var workoutRatios = {
 };
 
 calculate.addEventListener('click', app);
+nextBtn.addEventListener('click', goToNextPage);
 //nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
-initForm.addEventListener('submit', app);
+//initForm.addEventListener('submit', app);
