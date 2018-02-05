@@ -18,7 +18,8 @@ function app() {
     initForm.classList.toggle('hidden', false);
 }
 
-function goToNextPage() {
+function navigateBackForward(event) {
+    var navigateCond = event.target;
     var nodeTablesRendered = document.querySelectorAll('.js-table');
     var arrTablesRendered = Array.prototype.slice.call(nodeTablesRendered);
 
@@ -42,32 +43,21 @@ function goToNextPage() {
             prevBtn.classList.toggle('hidden', false);
             nextBtn.classList.toggle('hidden', false);
     }
-    if(displayIndex != 11){
-        arrTablesRendered[displayIndex].classList.toggle('hidden', true);
-        arrTablesRendered[displayIndex += 1].classList.toggle('hidden', false);
-    }
+        if(displayIndex != 11){
+            switch (navigateCond.name) {
+                case 'next':
+                    arrTablesRendered[displayIndex].classList.toggle('hidden', true);
+                    arrTablesRendered[displayIndex += 1].classList.toggle('hidden', false);
+                    break;
+                case 'previous':
+                arrTablesRendered[displayIndex].classList.toggle('hidden', true);
+                arrTablesRendered[displayIndex -= 1].classList.toggle('hidden', false);
+                    break;
+                }
+        }
 
 }
-// if (getDisplayIndex === 0) {
-//     prevBtn.classList.toggle('hidden', true);
-// } else if (getDisplayIndex === arrTablesRendered.length) {
-//     nextBtn.classList.toggle('hidden', true);
-// };
 
-
-
-//     var counter = 0;
-//     var showNextElem = document.querySelector('.someClass');
-//     showNextElem.classList.toggle('hidden', true);
-//     showNextElem.className = 'hidden';
-//     counter +=1;
-//     showNextElem.className = 'show';
-//     if(showNextElem === 0){
-//         prevBtn.className = 'hidden';
-//     }else if(showNextElem === Object.keys(tableObject).length){
-//         nextBtn.className = 'hidden';
-//     }
-// }
 
 var warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
 var workoutRatios = {
@@ -86,6 +76,7 @@ var workoutRatios = {
 };
 
 calculate.addEventListener('click', app);
-nextBtn.addEventListener('click', goToNextPage);
+nextBtn.addEventListener('click', navigateBackForward);
+prevBtn.addEventListener('click', navigateBackForward);
 //nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
 //initForm.addEventListener('submit', app);
