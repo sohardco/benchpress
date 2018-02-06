@@ -2,7 +2,7 @@
 function createTableFromObj(tableObj) {
     var body = document.body;
     var tbl = document.createElement("table");
-    tbl.className = "hidden table js-table";
+    tbl.className = "table js-table hidden";
     //tbl.id = tableObj[0];
     //var th = tbl.createTHead();
     var tdCount = 3;
@@ -26,13 +26,12 @@ function createTableFromObj(tableObj) {
 }
 
 //Splits object to create separate tables for every training day
-function fillTable(calculatedBarbellWeights) {
-    var iterations = Object.keys(calculatedBarbellWeights).length
+export function fillTable(calculatedBarbellWeights) {
+    const iterations = Object.keys(calculatedBarbellWeights).length;
+
     for (var i = 0; i < iterations ; i++) {
         var tableData = Object.entries(calculatedBarbellWeights)[i];
         createTableFromObj(tableData);
-
-
     }
 };
 

@@ -1,20 +1,22 @@
-var concatDays = [];
-var calculatedBarbellWeights = {};
+export function concatTrainingRatios(warmUp, scaleObj) {
+    const concatDays = [];
 
-function concatTrainingRatios(warmUp, scaleObj) {
-        for (var i = 0; i < (Object.values(scaleObj).length); i++) {
-            if (Object.keys(scaleObj)[i] === "eleventhDay") {
-                concatDays[i] = Object.values(scaleObj)[i];
-            } else if (Object.keys(scaleObj)[i] === "lastDay") {
-                concatDays[i] = Object.values(scaleObj)[i];
-            } else {
-                concatDays[i] = warmUp.concat( Object.values(scaleObj)[i] );
-            }
+    for (var i = 0; i < (Object.values(scaleObj).length); i++) {
+        if (Object.keys(scaleObj)[i] === "eleventhDay") {
+            concatDays[i] = Object.values(scaleObj)[i];
+        } else if (Object.keys(scaleObj)[i] === "lastDay") {
+            concatDays[i] = Object.values(scaleObj)[i];
+        } else {
+            concatDays[i] = warmUp.concat( Object.values(scaleObj)[i] );
         }
+    }
+
     return concatDays;
 };
 
-function calculateWeights(weight, concatDays) {
+export function calculateWeights(weight, concatDays) {
+    const calculatedBarbellWeights = {};
+
     for (var count = 0; count < concatDays.length; count++) {
         var trainingWeight = [];
         var ratio = concatDays[count];
@@ -23,5 +25,6 @@ function calculateWeights(weight, concatDays) {
         }
         calculatedBarbellWeights["tableDay" + count] = trainingWeight;
     }
+
     return calculatedBarbellWeights;
 };

@@ -1,66 +1,14 @@
-var calculateBtn = document.getElementById("calculate");
-var headTable = document.getElementById("headtable");
-var prevBtn = document.getElementById("previous");
-var nextBtn = document.getElementById("next");
-var initForm = document.getElementById("init");
+import { concatTrainingRatios, calculateWeights } from './maths.js';
+import { fillTable } from './tablecreate.js';
 
-function app() {
-    var initialBarbellweight = parseInt(document.getElementById('inputWeight').value);
+const calculateBtn = document.querySelector('#calculate');
+const headTable = document.querySelector('#headtable');
+const prevBtn = document.querySelector('#previous');
+const nextBtn = document.querySelector('#next');
+const initForm = document.querySelector('#init');
 
-    concatTrainingRatios(warmUp, workoutRatios);
-    calculateWeights(initialBarbellweight, concatDays);
-    console.log(calculatedBarbellWeights);
-    fillTable(calculatedBarbellWeights);
-    var showFirstDay = document.querySelector('.js-table');
-    headTable.classList.toggle('hidden', false);
-    showFirstDay.classList.toggle('hidden', false);
-    nextBtn.classList.toggle('hidden', false);
-    initForm.classList.toggle('hidden', false);
-}
-
-function navigateBackForward(event) {
-    var navigateCond = event.target;
-    var nodeTablesRendered = document.querySelectorAll('.js-table');
-    var arrTablesRendered = Array.prototype.slice.call(nodeTablesRendered);
-
-    function returnDisplayElement(element){
-	    var regCheck = /(hidden)/gi;
-	    if (!regCheck.test(element.classList.value)){
-	       return element.classList.value
-	    }
-    };
-
-    var displayIndex = arrTablesRendered.findIndex(returnDisplayElement);
-
-    switch (displayIndex) {
-        case 0:
-            prevBtn.classList.toggle('hidden', true);
-            break;
-        case 10:
-            nextBtn.classList.toggle('hidden', true);
-            break;
-        default:
-            prevBtn.classList.toggle('hidden', false);
-            nextBtn.classList.toggle('hidden', false);
-    }
-        if(displayIndex != 11){
-            switch (navigateCond.name) {
-                case 'next':
-                    arrTablesRendered[displayIndex].classList.toggle('hidden', true);
-                    arrTablesRendered[displayIndex += 1].classList.toggle('hidden', false);
-                    break;
-                case 'previous':
-                arrTablesRendered[displayIndex].classList.toggle('hidden', true);
-                arrTablesRendered[displayIndex -= 1].classList.toggle('hidden', false);
-                    break;
-                }
-        }
-
-}
-
-
-var warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
-var workoutRatios = {
+const warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
+const workoutRatios = {
     firstDay:[0.84, 0.8],
     secondDay:[0.92, 0.96, 0.84, 0.8],
     thirdDay:[0.92, 0.84, 0.8],
@@ -75,8 +23,105 @@ var workoutRatios = {
     lastDay:[0.36, 0.54, 0.68, 0.76, 0.84, 0.92, 1.0]
 };
 
+function app() {
+    const weightInput = document.getElementById('inputWeight');
+    const initialBarbellweight = Number(weightInput.value);
+
+    const concatDays = concatTrainingRatios(warmUp, workoutRatios);
+    const calculatedBarbellWeights = calculateWeights(initialBarbellweight, concatDays);
+
+    console.log(calculatedBarbellWeights);
+
+    fillTable(calculatedBarbellWeights);
+
+    const showFirstDay = document.querySelector('.js-table');
+
+    headTable.classList.toggle('hidden', false);
+    showFirstDay.classList.toggle('hidden', false);
+    nextBtn.classList.toggle('hidden', false);
+    initForm.classList.toggle('hidden', false);
+}
+
+const tables = document.querySelectorAll('.js-table');
+const tablesList = Array.from(tables);
+
+// function back() {}
+// function forward() {}
+function navigate(event) {
+    const currentTableIndex = tablesList.findIndex(element => !element.classList.contains('hidden'));
+    const direction = event.target.name;
+    const nextTableIndex = direction === 'next' ? ++currentTableIndex : --currentTableIndex;
+
+    // hide current table
+    tables[currentTableIndex].classList.toggle('hidden', true);
+
+    // show next table
+    tables[nextTableIndex].classList.toggle('hidden', false);
+
+
+    // move to separate method
+    if (direction === 'next' && nextTableIndex === tablesList.length) {
+        // hide next button
+    } else if (direction === 'previous' && nextTableIndex === 0) {
+        // hide prev button
+    }
+}
+
+function navigateBackForward(event) {
+    var navigateCond = event.target;
+    var tables = document.querySelectorAll('.js-table');
+    var tablesList = Array.from(tables);
+
+    function returnDisplayElement(element) {
+	    return element.classList.contains('hidden');
+    };
+
+    function nextItem(index){
+        if (index < workoutRatios.length) {
+            tablesList[displayIndex].classList.toggle('hidden', true);
+            tablesList[displayIndex += 1].classList.toggle('hidden', false);
+        }
+    };
+
+    function prevItem(index){
+        tablesList[displayIndex].classList.toggle('hidden', true);
+        tablesList[displayIndex -= 1].classList.toggle('hidden', false);
+        if (displayIndex == 0) {
+            prevBtn.classList.toggle('hidden', true);
+        }
+    };
+
+    var displayIndex = tablesList.findIndex(returnDisplayElement);
+
+    switch (displayIndex) {
+        // case 0:
+        //     prevBtn.classList.toggle('hidden', true);
+        //     break;
+        case 10:
+            nextBtn.classList.toggle('hidden', true);
+            break;
+        case -1:
+            document.querySelector('.js-table').classList.toggle('hidden', false);
+            break;
+        default:
+            prevBtn.classList.toggle('hidden', false);
+            nextBtn.classList.toggle('hidden', false);
+    }
+    switch (navigateCond.name) {
+        case 'next':
+            nextItem(displayIndex);
+            break;
+        case 'previous':
+            prevItem(displayIndex);
+            break;
+    }
+}
+
 calculate.addEventListener('click', app);
 nextBtn.addEventListener('click', navigateBackForward);
 prevBtn.addEventListener('click', navigateBackForward);
 //nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
-//initForm.addEventListener('submit', app);
+initForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    app();
+});
