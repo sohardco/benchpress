@@ -1,12 +1,15 @@
+const body = document.body;
+const div = document.createElement('div');
+
 //Creates table based on object served from fillTable function
 function createTableFromObj(tableObj) {
-    var body = document.body;
-    var tbl = document.createElement("table");
+    const tbl = document.createElement('table');
+
     tbl.className = "table js-table hidden";
     //tbl.id = tableObj[0];
     //var th = tbl.createTHead();
-    var tdCount = 3;
-    var trCount = tableObj[1].length;
+    const tdCount = 3;
+    const trCount = tableObj[1].length;
 
     for (var i = 0; i < trCount; i++) {
         var tr = tbl.insertRow();
@@ -22,12 +25,15 @@ function createTableFromObj(tableObj) {
         }
     }
     //body.removeChild(tbl);
-    body.appendChild(tbl);
+    div.appendChild(tbl);
 }
 
 //Splits object to create separate tables for every training day
 export function fillTable(calculatedBarbellWeights) {
     const iterations = Object.keys(calculatedBarbellWeights).length;
+
+    div.className = "workouts js-workouts";
+    body.appendChild(div);
 
     for (var i = 0; i < iterations ; i++) {
         var tableData = Object.entries(calculatedBarbellWeights)[i];
@@ -35,10 +41,11 @@ export function fillTable(calculatedBarbellWeights) {
     }
 };
 
-// for (var i = 0; i < calculatedBarbellWeights.length; i++) {
-//     var fillingArray = calculatedBarbellWeights[i];
-// for (var i = 0; i < fillingArray.length; i++) {
-//     document.getElementsByName("weight")[i].innerHTML = fillingArray[i];
-//     }
-// }
-//export {calculateWeights, concatTrainingRatios};
+//check if div with tables is present
+export function isTablePresent(){
+    const element =  document.querySelector('.js-workouts');
+
+    if (typeof(element) != 'undefined' || element != null){
+        return false
+    }
+}

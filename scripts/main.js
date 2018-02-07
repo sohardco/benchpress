@@ -1,5 +1,5 @@
 import { concatTrainingRatios, calculateWeights } from './maths.js';
-import { fillTable } from './tablecreate.js';
+import { fillTable, isTablePresent } from './tablecreate.js';
 
 const calculateBtn = document.querySelector('#calculate');
 const headTable = document.querySelector('#headtable');
@@ -24,6 +24,10 @@ const workoutRatios = {
 };
 
 function app() {
+    var divRemove = isTablePresent();
+    if (divRemove === true){
+        div.remove();
+    }
     const weightInput = document.getElementById('inputWeight');
     const initialBarbellweight = Number(weightInput.value);
 
@@ -40,86 +44,97 @@ function app() {
     showFirstDay.classList.toggle('hidden', false);
     nextBtn.classList.toggle('hidden', false);
     initForm.classList.toggle('hidden', false);
+
 }
 
-const tables = document.querySelectorAll('.js-table');
-const tablesList = Array.from(tables);
 
-// function back() {}
-// function forward() {}
+
+
+function back() {
+
+}
+function forward() {
+
+}
 function navigate(event) {
-    const currentTableIndex = tablesList.findIndex(element => !element.classList.contains('hidden'));
+    const step = 1;
+    const tables = document.querySelectorAll('.js-table');
+    const tablesList = Array.from(tables);
+    const currentTableIndex = tablesList.findIndex(element => !element.classList.contains('hidden'),);
     const direction = event.target.name;
-    const nextTableIndex = direction === 'next' ? ++currentTableIndex : --currentTableIndex;
-
+    //var nextTableIndex = direction === 'next' ? ++currentTableIndex : --currentTableIndex;
+    if (direction === 'next') {
+        var nextTableIndex = currentTableIndex + step;
+    } else {
+        nextTableIndex = currentTableIndex + step;
+    }
     // hide current table
-    tables[currentTableIndex].classList.toggle('hidden', true);
+    tablesList[currentTableIndex].classList.toggle('hidden', true);
 
     // show next table
-    tables[nextTableIndex].classList.toggle('hidden', false);
+    tablesList[nextTableIndex].classList.toggle('hidden', false);
 
 
     // move to separate method
     if (direction === 'next' && nextTableIndex === tablesList.length) {
-        // hide next button
+        nextBtn.classList.toggle('hidden', true);
     } else if (direction === 'previous' && nextTableIndex === 0) {
-        // hide prev button
-    }
+        prevBtn.classList.toggle('hidden', true);
+    };
 }
 
-function navigateBackForward(event) {
-    var navigateCond = event.target;
-    var tables = document.querySelectorAll('.js-table');
-    var tablesList = Array.from(tables);
-
-    function returnDisplayElement(element) {
-	    return element.classList.contains('hidden');
-    };
-
-    function nextItem(index){
-        if (index < workoutRatios.length) {
-            tablesList[displayIndex].classList.toggle('hidden', true);
-            tablesList[displayIndex += 1].classList.toggle('hidden', false);
-        }
-    };
-
-    function prevItem(index){
-        tablesList[displayIndex].classList.toggle('hidden', true);
-        tablesList[displayIndex -= 1].classList.toggle('hidden', false);
-        if (displayIndex == 0) {
-            prevBtn.classList.toggle('hidden', true);
-        }
-    };
-
-    var displayIndex = tablesList.findIndex(returnDisplayElement);
-
-    switch (displayIndex) {
-        // case 0:
-        //     prevBtn.classList.toggle('hidden', true);
-        //     break;
-        case 10:
-            nextBtn.classList.toggle('hidden', true);
-            break;
-        case -1:
-            document.querySelector('.js-table').classList.toggle('hidden', false);
-            break;
-        default:
-            prevBtn.classList.toggle('hidden', false);
-            nextBtn.classList.toggle('hidden', false);
-    }
-    switch (navigateCond.name) {
-        case 'next':
-            nextItem(displayIndex);
-            break;
-        case 'previous':
-            prevItem(displayIndex);
-            break;
-    }
-}
+// function navigateBackForward(event) {
+//     var navigateCond = event.target;
+//     var tables = document.querySelectorAll('.js-table');
+//     var tablesList = Array.from(tables);
+//
+//     function returnDisplayElement(element) {
+// 	    return element.classList.contains('hidden');
+//     };
+//
+//     var displayIndex = tablesList.findIndex(returnDisplayElement);
+//
+//     function nextItem(index){
+//         if (index < tablesList.length) {
+//             tablesList[displayIndex].classList.toggle('hidden', false);
+//             tablesList[displayIndex -= 1].classList.toggle('hidden', true);
+//         }
+//     };
+//
+//     function prevItem(index){
+//         tablesList[displayIndex].classList.toggle('hidden', false);
+//         tablesList[displayIndex += 1].classList.toggle('hidden', true);
+//         if (displayIndex == 0) {
+//             prevBtn.classList.toggle('hidden', true);
+//         }
+//     };
+//
+//
+//
+//     switch (displayIndex) {
+//         case 10:
+//             nextBtn.classList.toggle('hidden', true);
+//             break;
+//         case -1:
+//             document.querySelector('.js-table').classList.toggle('hidden', false);
+//             break;
+//         default:
+//             prevBtn.classList.toggle('hidden', false);
+//             nextBtn.classList.toggle('hidden', false);
+//     }
+//     switch (navigateCond.name) {
+//         case 'next':
+//             nextItem(displayIndex);
+//             break;
+//         case 'previous':
+//             prevItem(displayIndex);
+//             break;
+//     }
+// }
 
 calculate.addEventListener('click', app);
-nextBtn.addEventListener('click', navigateBackForward);
-prevBtn.addEventListener('click', navigateBackForward);
+nextBtn.addEventListener('click', navigate);
+prevBtn.addEventListener('click', navigate);
 //nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
 initForm.addEventListener('submit', (e) => {
     e.preventDefault();
