@@ -5,9 +5,8 @@ const div = document.createElement('div');
 function createTableFromObj(tableObj) {
     const tbl = document.createElement('table');
 
-    tbl.className = "table js-table hidden";
-    //tbl.id = tableObj[0];
-    //var th = tbl.createTHead();
+    tbl.className = 'table js-table hidden';
+
     const tdCount = 3;
     const trCount = tableObj[1].length;
 
@@ -17,9 +16,9 @@ function createTableFromObj(tableObj) {
             var td = tr.insertCell();
             if (j == 0) {
                 td.appendChild(document.createTextNode('Cell1'));
-            }else if (j == 1) {
+            } else if (j == 1) {
                 td.appendChild(document.createTextNode('Cell2'));
-            }else {
+            } else {
                 td.appendChild(document.createTextNode('Cell3'));
             }
         }
@@ -42,10 +41,19 @@ export function fillTable(calculatedBarbellWeights) {
 };
 
 //check if div with tables is present
-export function isTablePresent(){
+export function isTablePresent() {
     const element =  document.querySelector('.js-workouts');
 
-    if (typeof(element) != 'undefined' || element != null){
+    if (element) {
+        return ({
+            div: element,
+            divRemove: true
+        });
+    } else {
         return false
     }
 }
+
+// export function divRemove() {
+//
+// }
