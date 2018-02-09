@@ -1,5 +1,5 @@
 import { concatTrainingRatios, calculateWeights } from './maths.js';
-import { fillTable, isTablePresent } from './tablecreate.js';
+import { fillTable } from './tablecreate.js';
 
 const calculateBtn = document.querySelector('#calculate');
 const headTable = document.querySelector('#headtable');
@@ -24,20 +24,14 @@ const workoutRatios = {
     lastDay:[0.36, 0.54, 0.68, 0.76, 0.84, 0.92, 1.0]
 };
 
-function app() {
-    // let { div, divRemove } = isTablePresent();
-    //
-    // if (divRemove === true) {
-    //     div.remove();
-    // }
+function
 
+
+function app() {
     const container = document.querySelector('.js-workouts');
     if (container) {
         container.innerHTML = '';
-    } else {
-        document.createElement
-    }
-
+    };
 
     const weightInput = document.getElementById('inputWeight');
     const initialBarbellweight = Number(weightInput.value);
@@ -50,11 +44,6 @@ function app() {
     fillTable(calculatedBarbellWeights);
 
     const showFirstDay = document.querySelector('.js-table');
-
-    headTable.classList.toggle('hidden', false);
-    showFirstDay.classList.toggle('hidden', false);
-    nextBtn.classList.toggle('hidden', false);
-    initForm.classList.toggle('hidden', false);
 
 }
 
