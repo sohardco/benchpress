@@ -12,3 +12,11 @@ input:valid {
 .hidden {
     display: none;
 }
+.workouts{
+    width: 5em;
+    height: 20em;
+    border: 1px solid cyan;
+}
+#next{
+
+}

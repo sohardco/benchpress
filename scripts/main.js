@@ -7,7 +7,9 @@ const prevBtn = document.querySelector('#previous');
 const nextBtn = document.querySelector('#next');
 const initForm = document.querySelector('#init');
 const backBtn = document.querySelector('#back');
+const container = document.querySelector('.js-workouts');
 
+//weight ratios and reps counter
 const warmUp = [0.3, 0.45, 0.6, 0.7, 0.8, 0.84, 0.88];
 const workoutRatios = {
     firstDay:[0.84, 0.8],
@@ -23,27 +25,45 @@ const workoutRatios = {
     eleventhDay:[0.3, 0.45, 0.6, 0.7],
     lastDay:[0.36, 0.54, 0.68, 0.76, 0.84, 0.92, 1.0]
 };
+const warmupReps = ['8','6','6','5','4','3','3'];
+const trainingReps = {
+    firstDay:['2x4', '2x2'],
+    secondDay:['2', '2', '2x5', '2x2'],
+    thirdDay:['3', '2x6', '2x3'],
+    fourthDay:['2', '1', '1', '2x3', '2x3'],
+    fifthDay:['3', '2x4', '3x3'],
+    sixthDay:['2', '2', '2x5', '3x3'],
+    seventhDay:['2', '2', '1', '2x3', '2x2'],
+    eightsDay:['3', '2', '2x4', '2x3'],
+    ninthDay:['3', '2', '1', '2x3', '3x3'],
+    tenthDay:['3', '2', '1', '2x3', '2x2'],
+    eleventhDay:['10', '8', '6', '5'],
+    lastDay:['8', '6', '5', '4', '3', '2', '1']
+};
 
-function
+function toggleHiddenElements(state, boolean){
+    headTable.classList.toggle(state, boolean);
+    document.querySelector('.js-table').classList.toggle(state, boolean);
+    nextBtn.classList.toggle(state, boolean);
 
+};
 
 function app() {
-    const container = document.querySelector('.js-workouts');
-    if (container) {
-        container.innerHTML = '';
-    };
+    container.innerHTML = '';
 
     const weightInput = document.getElementById('inputWeight');
     const initialBarbellweight = Number(weightInput.value);
 
     const concatDays = concatTrainingRatios(warmUp, workoutRatios);
+    const concatReps = concatTrainingRatios(warmupReps, trainingReps);
     const calculatedBarbellWeights = calculateWeights(initialBarbellweight, concatDays);
 
+    console.log(concatReps);
     console.log(calculatedBarbellWeights);
 
     fillTable(calculatedBarbellWeights);
+    toggleHiddenElements('hidden', false);
 
-    const showFirstDay = document.querySelector('.js-table');
 
 }
 
@@ -69,7 +89,6 @@ function showBtn(nextTableIndex, tablesList, step){
         nextBtn.classList.toggle('hidden', false);
     }
 }
-
 
 function navigate(event) {
     // get navigation data

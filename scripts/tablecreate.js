@@ -1,8 +1,7 @@
-const body = document.body;
-const div = document.createElement('div');
 
 //Creates table based on object served from fillTable function
 function createTableFromObj(tableObj) {
+    const getWorkoutDiv = document.querySelector('.js-workouts');
     const tbl = document.createElement('table');
 
     tbl.className = 'table js-table hidden';
@@ -11,49 +10,31 @@ function createTableFromObj(tableObj) {
     const trCount = tableObj[1].length;
 
     for (var i = 0; i < trCount; i++) {
+        var weight = tableObj[1][i];
         var tr = tbl.insertRow();
+        var period = "Period " + (i + 1);
+
         for (var j = 0; j < tdCount; j++) {
             var td = tr.insertCell();
             if (j == 0) {
-                td.appendChild(document.createTextNode('Cell1'));
+                td.textContent = period;
             } else if (j == 1) {
-                td.appendChild(document.createTextNode('Cell2'));
+                td.textContent = weight;
             } else {
-                td.appendChild(document.createTextNode('Cell3'));
+                td.textContent = ;
             }
         }
     }
     //body.removeChild(tbl);
-    div.appendChild(tbl);
+    getWorkoutDiv.appendChild(tbl);
 }
 
 //Splits object to create separate tables for every training day
 export function fillTable(calculatedBarbellWeights) {
     const iterations = Object.keys(calculatedBarbellWeights).length;
 
-    div.className = "workouts js-workouts";
-    body.appendChild(div);
-
     for (var i = 0; i < iterations ; i++) {
         var tableData = Object.entries(calculatedBarbellWeights)[i];
         createTableFromObj(tableData);
     }
 };
-
-//check if div with tables is present
-export function isTablePresent() {
-    const element =  document.querySelector('.js-workouts');
-
-    if (element) {
-        return ({
-            div: element,
-            divRemove: true
-        });
-    } else {
-        return false
-    }
-}
-
-// export function divRemove() {
-//
-// }
