@@ -7,21 +7,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form id="init">
+        <form id="startform">
             <label for="number"> Please, enter your peak barbell weight</label>
-            <input id="inputWeight" type="number" name="amount" min="1" max="500">
+            <input id="inputWeight" type="number" placeholder= "100 kg" name="amount" min="20" max="500" >
             <input type="button" id="calculate" value="Calculate!">
         </form>
-        <table class="headtable hidden" id="headtable">
-            <tr>
-                <th>Period</th>
-                <th>Weight</td>
-                <th>Repeats</td>
-            </tr>
-        </table>
-        <div class="workouts js-workouts">
-
-        </div>
+        <div class="workouts js-workouts"></div>
         <div class="controls">
             <input type="button" class="button js-button hidden" id="back" name="back" value="back">
             <input type="button" class="button js-button hidden" id="previous" name="previous" value="previous">

@@ -2,7 +2,6 @@ import { concatTrainingRatios, calculateWeights } from './maths.js';
 import { fillTable } from './tablecreate.js';
 
 const calculateBtn = document.querySelector('#calculate');
-const headTable = document.querySelector('#headtable');
 const prevBtn = document.querySelector('#previous');
 const nextBtn = document.querySelector('#next');
 const initForm = document.querySelector('#init');
@@ -42,7 +41,6 @@ const trainingReps = {
 };
 
 function toggleHiddenElements(state, boolean){
-    headTable.classList.toggle(state, boolean);
     document.querySelector('.js-table').classList.toggle(state, boolean);
     nextBtn.classList.toggle(state, boolean);
 
@@ -61,7 +59,7 @@ function app() {
     console.log(concatReps);
     console.log(calculatedBarbellWeights);
 
-    fillTable(calculatedBarbellWeights);
+    fillTable(calculatedBarbellWeights, concatReps);
     toggleHiddenElements('hidden', false);
 
 

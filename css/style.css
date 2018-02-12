@@ -1,6 +1,15 @@
 html {
     font-family: monospace;
 }
+table, th, td {
+    border: 1px solid black;
+}
+tr {
+    width:;
+
+    text-align: center;
+}
+
 input:invalid {
   border: 2px solid red;
 }
@@ -13,10 +22,60 @@ input:valid {
     display: none;
 }
 .workouts{
-    width: 5em;
-    height: 20em;
-    border: 1px solid cyan;
+    width: 20em;
+    height: 22em;
 }
-#next{
+.table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button{
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+}
+
+/* Form*/
+label {
+    display: inherit;
+    text-align: center;
+}
+#startform{
+    display: block;
 
 }
+#inputWeight{
+    display: inline-block;
+    width: 20%;
+    padding: 12px 20px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+#calculate{
+    display: inherit;
+}
+
+
+#previous{
+    background-color: #FF495C;
+}
+#next{
+    background-color: #3DDC97;
+    position: relative;
+
+
+}
+
+
+/* #256EFF - back
+
+#46237A - background */
