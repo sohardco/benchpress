@@ -17,7 +17,7 @@ function createTableFromObj(tableObj, repDay) {
         if (j == 0) {
             headCell.textContent = "Period";
         } else if (j == 1) {
-            headCell.textContent = "Weight";
+            headCell.textContent = "Weight (in kg)";
         } else {
             headCell.textContent = "Reps";
         }

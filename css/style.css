@@ -1,81 +1,182 @@
-html {
-    font-family: monospace;
-}
-table, th, td {
-    border: 1px solid black;
-}
-tr {
-    width:;
-
-    text-align: center;
-}
-
-input:invalid {
-  border: 2px solid red;
-}
-
-input:valid {
-  border: 2px solid black;
+:root {
+    --bgcolour: #747572;
+    --border-radius: .25rem;
 }
 
 .hidden {
-    display: none;
-}
-.workouts{
-    width: 20em;
-    height: 22em;
-}
-.table{
-    margin-left: auto;
-    margin-right: auto;
+    display: none !important;
 }
 
-.button{
-   border: none;
-   color: white;
-   padding: 15px 32px;
-   text-align: center;
-   text-decoration: none;
-   font-size: 16px;
-   margin: 4px 2px;
-   cursor: pointer;
+body {
+  font-family: 'Helvetica', sans-serif;
 }
 
-/* Form*/
-label {
-    display: inherit;
-    text-align: center;
-}
-#startform{
-    display: block;
-
-}
-#inputWeight{
-    display: inline-block;
-    width: 20%;
-    padding: 12px 20px;
-
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-
-}
-#calculate{
-    display: inherit;
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
 }
 
-
-#previous{
-    background-color: #FF495C;
-}
-#next{
-    background-color: #3DDC97;
+.card {
+    margin: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border-radius: .25rem;
+    border: 1px solid gray;
+}
 
+.card-img-top {
+    margin: auto;
+    border-top-left-radius: calc(var(--border-radius) - 1px);
+    border-top-right-radius: calc(var(--border-radius) - 1px);
+    width: 100%; /*/ Required because we use flexbox and this inherently applies align-self: stretch*/
 
 }
 
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    background: #DEE5E5;
+}
 
-/* #256EFF - back
+.card-title {
+  margin-bottom: .75rem;
+}
 
-#46237A - background */
+.card-subtitle {
+    margin-top: -.375rem;
+    margin-bottom: 0;
+    color: #6c757d
+}
+
+
+.card-header {
+  padding:  .75rem 1.25rem;
+  margin-bottom: 0; /*/ Removes the default margin-bottom of <hN>*/
+  background-color: black .03;
+  border-bottom: 1px solid black .125;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.input-group>.form-control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+
+}
+
+.form-control{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group-text{
+    display: flex;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn {
+    display: inline-block;
+    color: #fff;
+    background-color: #007bff;
+    border-color:  #0062cc;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: var(--border-radius);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.controls{
+height: inherit;
+width: inherit;
+}
+
+.btn-next{
+    float: right;
+    width: 88px;
+}
+
+.btn-previous {
+    float: left;
+    
+}
+
+.workouts{
+    width: 100%;
+
+    /* margin-bottom: 2em; */
+}
+
+
+/* table, th, td {
+    background: #f1faee;
+    /* border: 1px solid #1d3557; */
+}
+/* table {
+    width: 80%;
+    margin: auto;
+    position: relative;
+    border-radius: 4px;
+} */
+
+/* tr {
+    text-align: center;
+} */ */ */

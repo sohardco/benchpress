@@ -2,9 +2,9 @@ import { concatTrainingRatios, calculateWeights } from './maths.js';
 import { fillTable } from './tablecreate.js';
 
 const calculateBtn = document.querySelector('#calculate');
-const prevBtn = document.querySelector('#previous');
-const nextBtn = document.querySelector('#next');
-const initForm = document.querySelector('#init');
+const prevBtn = document.querySelector('.btn-previous');
+const nextBtn = document.querySelector('.btn-next');
+const startForm = document.querySelector('.js-form');
 const backBtn = document.querySelector('#back');
 const container = document.querySelector('.js-workouts');
 
@@ -49,7 +49,7 @@ function toggleHiddenElements(state, boolean){
 function app() {
     container.innerHTML = '';
 
-    const weightInput = document.getElementById('inputWeight');
+    const weightInput = document.getElementById('weight');
     const initialBarbellweight = Number(weightInput.value);
 
     const concatDays = concatTrainingRatios(warmUp, workoutRatios);
@@ -117,12 +117,12 @@ function navigate(event) {
     //else show both
 }
 
-calculate.addEventListener('click', app);
+calculateBtn.addEventListener('click', app);
 nextBtn.addEventListener('click', navigate);
 prevBtn.addEventListener('click', navigate);
 //backBtn.addEventListener('click', )
 //nextBtn.addEventListener('click', toggleNextPage.bind(null, calculatedBarbellWeights));
-initForm.addEventListener('submit', (e) => {
+startForm.addEventListener('submit', (e) => {
     e.preventDefault();
     app();
 });

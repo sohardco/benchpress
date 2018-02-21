@@ -7,17 +7,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form id="startform">
-            <label for="number"> Please, enter your peak barbell weight</label>
-            <input id="inputWeight" type="number" placeholder= "100 kg" name="amount" min="20" max="500" >
-            <input type="button" id="calculate" value="Calculate!">
-        </form>
-        <div class="workouts js-workouts"></div>
-        <div class="controls">
-            <input type="button" class="button js-button hidden" id="back" name="back" value="back">
-            <input type="button" class="button js-button hidden" id="previous" name="previous" value="previous">
-            <input type="button" class="button js-button hidden" id="next" name="next" value="next">
+        <div class="card js-card">
+            <img class="card-img-top" src="./img/barbell-live.jpeg" alt="Barbell live photo">
+            <div class="card-body">
+                <h5 class="card-title">Please, enter your peak barbell weight: </h5>
+                    <div class="input-group mb-3">
+                        <input type="number" placeholder="100" name="amount" min="1" max="500" class="form-control" id="weight">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="weight-addon">kg</span>
+                            </div>
+                        <div class="workouts js-workouts"></div>
+                        <div class="controls">
+                            <input type="button" class="btn js-btn hidden" id="back" name="back" value="back">
+                            <input type="button" class="btn js-btn btn-previous hidden" id="previous" name="previous" value="previous">
+                            <input type="button" class="btn js-btn btn-next hidden" id="next" name="next" value="next">
+                        </div>
+                    </div>
+                <input type="button" class="btn js-btn" id="calculate" value="Calculate!">
+            </div>
         </div>
-        <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
     </body>
 </html>
